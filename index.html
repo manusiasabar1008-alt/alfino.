@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Untuk Keluargaku yang kucintai</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --cream: #fff9f4;
+      --pink: #f6b8c8;
+      --rose: #c95778;
+      --dark-rose: #7e3653;
+      --purple: #7564a8;
+      --text: #4c3541;
+      --glass: rgba(255, 255, 255, 0.6);
+      --shadow: 0 25px 70px rgba(108, 48, 78, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.75), transparent 28%),
+        radial-gradient(circle at 90% 10%, rgba(255, 200, 214, 0.6), transparent 30%),
+        linear-gradient(135deg, #f8d8df 0%, #f9eee7 42%, #d9d2f0 100%);
+    }
+
+    body::before {
+      position: fixed;
+      z-index: -1;
+      inset: 0;
+      content: "";
+      opacity: 0.18;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='180' height='180' viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1'%3E%3Cpath d='M20 50c30-35 55-35 85 0s50 35 75 0'/%3E%3Cpath d='M-30 140c35-35 65-35 100 0s65 35 100 0'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .floating-elements,
+    .sparkles {
+      position: fixed;
+      z-index: 0;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .floating-item {
+      position: absolute;
+      bottom: -50px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.25rem;
+      animation: floatUp linear infinite;
+      filter: drop-shadow(0 4px 5px rgba(130, 64, 95, 0.15));
+    }
+
+    .sparkle {
+      position: absolute;
+      color: white;
+      font-size: 0.9rem;
+      opacity: 0;
+      animation: sparkle 3s ease-in-out infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.9;
+      }
+      85% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes sparkle {
+      0%, 100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(0);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.25) rotate(180deg);
+      }
+    }
+
+    .opening {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      min-height: 100vh;
+      place-items: center;
+      padding: 24px;
+      transition: 0.8s ease;
+    }
+
+    .opening.hide {
+      transform: scale(1.08);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .opening-content {
+      width: min(100%, 560px);
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin-bottom: 15px;
+      color: var(--dark-rose);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .opening h1 {
+      margin-bottom: 28px;
+      color: var(--dark-rose);
+      font-family: "Dancing Script", cursive;
+      font-size: clamp(3rem, 9vw, 6.2rem);
+      line-height: 0.95;
+    }
+
+    .envelope {
+      position: relative;
+      width: min(100%, 430px);
+      height: 270px;
+      margin: 0 auto 30px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #fffaf6, #f5c0cc);
+      box-shadow: var(--shadow);
+      transform: rotate(-2deg);
+      transition: transform 0.4s ease;
+      cursor: pointer;
+    }
+
+    .envelope:hover {
+      transform: rotate(0) translateY(-8px);
+    }
+
+    .envelope::before {
+      position: absolute;
+      z-index: 2;
+      inset: 0 0 auto;
+      height: 58%;
+      content: "";
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      background: linear-gradient(135deg, #f8d3db, #df8fa7);
+      border-radius: 20px 20px 0 0;
+      transform-origin: top;
+      transition: transform 0.8s ease;
+    }
+
+    .envelope.open::before {
+      transform: rotateX(180deg);
+    }
+
+    .envelope::after {
+      position: absolute;
+      inset: auto 0 0;
+      height: 62%;
+      content: "";
+      clip-path: polygon(0 100%, 50% 0, 100% 100%);
+      background: #f4b7c6;
+      border-radius: 0 0 20px 20px;
+    }
+
+    .letter-preview {
+      position: absolute;
+      z-index: 1;
+      left: 10%;
+      bottom: 18px;
+      display: grid;
+      width: 80%;
+      height: 72%;
+      place-items: center;
+      border-radius: 12px;
+      color: var(--dark-rose);
+      font-family: "Dancing Script", cursive;
+      font-size: 2rem;
+      background: #fffdf9;
+      box-shadow: 0 8px 20px rgba(120, 52, 80, 0.1);
+    }
+
+    .seal {
+      position: absolute;
+      z-index: 3;
+      top: 47%;
+      left: 50%;
+      display: grid;
+      width: 58px;
+      height: 58px;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      background: var(--rose);
+      box-shadow: 0 7px 18px rgba(139, 42, 81, 0.3);
+      transform: translate(-50%, -50%);
+    }
+
+    .open-button,
+    .hug-button {
+      padding: 15px 25px;
+      border-radius: 999px;
+      color: white;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--rose), var(--purple));
+      box-shadow: 0 12px 25px rgba(126, 54, 86, 0.23);
+      transition: 0.3s ease;
+    }
+
+    .open-button:hover,
+    .hug-button:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 17px 30px rgba(126, 54, 86, 0.3);
+    }
+
+    .hint {
+      margin-top: 16px;
+      color: #80566a;
+      font-size: 0.88rem;
+    }
+
+    .main-content {
+      position: relative;
+      z-index: 1;
+      display: none;
+      width: min(100% - 32px, 1050px);
+      margin: 0 auto;
+      padding: 80px 0 70px;
+      animation: reveal 1.2s ease forwards;
+    }
+
+    .main-content.show {
+      display: block;
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .glass-card {
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 28px;
+      background: var(--glass);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .hero {
+      margin-bottom: 25px;
+      padding: clamp(28px, 6vw, 65px);
+      text-align: center;
+    }
+
+    .hero h2 {
+      color: var(--dark-rose);
+      font-family: "Dancing Script", cursive;
+      font-size: clamp(2.8rem, 8vw, 5.8rem);
+      line-height: 1;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 20px auto 0;
+      color: #715365;
+      line-height: 1.8;
+    }
+
+    .letter-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 25px;
+      align-items: stretch;
+    }
+
+    .letter {
+      padding: clamp(25px, 5vw, 50px);
+    }
+
+    .letter h3,
+    .memory h3 {
+      margin-bottom: 20px;
+      color: var(--dark-rose);
+      font-family: "Dancing Script", cursive;
+      font-size: 2.35rem;
+    }
+
+    .typing-text {
+      min-height: 300px;
+      white-space: pre-line;
+      line-height: 2;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      margin-left: 3px;
+      vertical-align: middle;
+      background: var(--rose);
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .memory {
+      padding: 22px;
+    }
+
+    .memory h3 {
+      padding: 10px 10px 0;
+      font-size: 2rem;
+    }
+
+    .photo-frame {
+      position: relative;
+      min-height: 390px;
+      overflow: hidden;
+      border: 10px solid white;
+      border-radius: 18px;
+      transform: rotate(2deg);
+      box-shadow: 0 14px 30px rgba(99, 43, 72, 0.14);
+    }
+
+    .photo-frame img {
+      display: block;
+      width: 100%;
+      height: 390px;
+      object-fit: cover;
+    }
+
+    .photo-caption {
+      position: absolute;
+      right: 15px;
+      bottom: 12px;
+      left: 15px;
+      padding: 9px;
+      border-radius: 8px;
+      color: white;
+      font-family: "Dancing Script", cursive;
+      font-size: 1.3rem;
+      text-align: center;
+      background: rgba(67, 38, 54, 0.55);
+    }
+
+    .closing {
+      margin-top: 25px;
+      padding: clamp(28px, 6vw, 60px);
+      text-align: center;
+    }
+
+    .closing h3 {
+      margin-bottom: 15px;
+      color: var(--dark-rose);
+      font-family: "Dancing Script", cursive;
+      font-size: clamp(2.3rem, 6vw, 4rem);
+    }
+
+    .closing p {
+      max-width: 650px;
+      margin: 0 auto 25px;
+      line-height: 1.8;
+    }
+
+    .footer-note {
+      margin-top: 35px;
+      color: #865e72;
+      font-family: "Dancing Script", cursive;
+      font-size: 1.5rem;
+    }
+
+    .heart-burst {
+      position: fixed;
+      z-index: 10;
+      pointer-events: none;
+      animation: burst 1.5s ease-out forwards;
+    }
+
+    @keyframes burst {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0.5);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) rotate(30deg) scale(1.5);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .opening h1 {
+        font-size: 3.5rem;
+      }
+
+      .envelope {
+        height: 230px;
+      }
+
+      .letter-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .typing-text {
+        min-height: 390px;
+      }
+
+      .photo-frame,
+      .photo-frame img {
+        min-height: 300px;
+        height: 300px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="floating-elements" id="floatingElements"></div>
+  <div class="sparkles" id="sparkles"></div>
+
+  <!-- Opening -->
+  <section class="opening" id="opening">
+    <div class="opening-content">
+      <p class="eyebrow">Sebuah pesan kecil dari hati</p>
+      <h1>Untukmu, yang begitu berarti</h1>
+
+      <div class="envelope" id="envelope" aria-label="Buka surat">
+        <div class="letter-preview">Dengan penuh rasa...</div>
+        <div class="seal">♥</div>
+      </div>
+
+      <button class="open-button" id="openButton">
+        Ada pesan khusus untukmu, pencet di sini
+      </button>
+
+      <p class="hint">Buka perlahan-lahan, karena pesan ini ditulis dengan hati.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="main-content" id="mainContent">
+    <section class="hero glass-card">
+      <p class="eyebrow">Terima kasih sudah hadir</p>
+      <h2>Untuk keluargaku yang kucintai
+      </h2>
+      <p>
+        Ada beberapa perasaan yang sulit diucapkan secara langsung.
+        Maka dari itu, biarkan halaman kecil ini menyampaikannya untukmu.
+      </p>
+    </section>
+
+    <section class="letter-grid">
+      <article class="letter glass-card">
+        <h3>Surat kecil untukmu</h3>
+        <p class="typing-text" id="typingText"></p>
+        <span class="cursor"></span>
+      </article>
+
+      <article class="memory glass-card">
+        <h3>Kenangan yang indah</h3>
+
+        <!-- Ganti URL gambar di bawah dengan foto kenangan sendiri -->
+        <div class="photo-frame">
+          <img
+
+src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=900&q=85"
+alt="kenangan indah bersama  keluarga"
+          />
+          <div class="photo-caption">Momen sederhana, kenangan luar biasa</div>
+        </div>
+      </article>
+    </section>
+
+    <section class="closing glass-card">
+      <h3>Semoga kita selalu menemukan alasan untuk tersenyum</h3>
+      <p>
+        Terima kasih untuk setiap perhatian, waktu, kesabaran, dan kebaikan
+        yang kamu berikan. Semoga hari-harimu selalu dipenuhi hal-hal baik,
+        dan semoga langkah kita ke depannya dipenuhi banyak cerita indah.
+      </p>
+
+      <button class="hug-button" id="hugButton">
+        Kirim Pelukan 🤍
+      </button>
+
+      <p class="footer-note">
+        Dengan tulus dan penuh rasa sayang,<br />
+        seseorang yang selalu menghargaimu
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const opening = document.getElementById("opening");
+    const envelope = document.getElementById("envelope");
+    const openButton = document.getElementById("openButton");
+    const mainContent = document.getElementById("mainContent");
+    const typingText = document.getElementById("typingText");
+    const hugButton = document.getElementById("hugButton");
+
+    // Edit isi surat di bagian ini
+    const letterContent = `Hai, kamu.
+
+Aku ingin mengucapkan terima kasih karena telah hadir dan menjadi bagian yang begitu berarti dalam hidupku.
+
+Terima kasih untuk setiap perhatian kecil, untuk percakapan yang membuat hari terasa lebih ringan, dan untuk caramu membuatku merasa dihargai serta dimengerti.
+
+Mungkin aku tidak selalu pandai menunjukkan perasaan, tetapi aku ingin kamu tahu bahwa kebaikanmu tidak pernah aku anggap biasa. Setiap momen bersamamu memiliki tempat yang istimewa di dalam ingatanku.
+
+Terima kasih sudah menjadi dirimu sendiri. Terima kasih karena, dengan caramu yang sederhana, kamu telah membuat banyak hal terasa lebih indah.
+
+Semoga apa pun yang terjadi nanti, kita selalu bisa saling mendoakan dan menyimpan kenangan baik tentang satu sama lain.
+
+Terima kasih, sudah menjadi seseorang yang begitu spesial.`;
+
+    let typingStarted = false;
+
+    function playOpenSound() {
+      // Efek suara sederhana tanpa file audio eksternal
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+
+      if (!AudioContext) return;
+
+      const audioContext = new AudioContext();
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+
+      oscillator.type = "sine";
+      oscillator.frequency.setValueAtTime(440, audioContext.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(
+        880,
+        audioContext.currentTime + 0.35
+      );
+
+      gain.gain.setValueAtTime(0.0001, audioContext.currentTime);
+      gain.gain.exponentialRampToValueAtTime(
+        0.12,
+        audioContext.currentTime + 0.04
+      );
+      gain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        audioContext.currentTime + 0.6
+      );
+
+      oscillator.connect(gain);
+      gain.connect(audioContext.destination);
+
+      oscillator.start();
+      oscillator.stop(audioContext.currentTime + 0.6);
+    }
+
+    function typeLetter() {
+      if (typingStarted) return;
+      typingStarted = true;
+
+      let index = 0;
+      const speed = 25;
+
+      function typeNextCharacter() {
+        if (index < letterContent.length) {
+          typingText.textContent += letterContent.charAt(index);
+          index++;
+          setTimeout(typeNextCharacter, speed);
+        }
+      }
+
+      typeNextCharacter();
+    }
+
+    function openLetter() {
+      envelope.classList.add("open");
+      playOpenSound();
+
+      setTimeout(() => {
+        opening.classList.add("hide");
+      }, 700);
+
+      setTimeout(() => {
+        opening.style.display = "none";
+        mainContent.classList.add("show");
+        typeLetter();
+      }, 1300);
+    }
+
+    openButton.addEventListener("click", openLetter);
+    envelope.addEventListener("click", openLetter);
+
+    function createFloatingElements() {
+      const container = document.getElementById("floatingElements");
+      const symbols = ["♥", "♡", "✦", "❀", "✿"];
+
+      for (let i = 0; i < 28; i++) {
+        const item = document.createElement("span");
+
+        item.className = "floating-item";
+        item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        item.style.left = `${Math.random() * 100}%`;
+        item.style.animationDuration = `${8 + Math.random() * 13}s`;
+        item.style.animationDelay = `${Math.random() * 12}s`;
+        item.style.fontSize = `${0.7 + Math.random() * 1.1}rem`;
+
+        container.appendChild(item);
+      }
+    }
+
+    function createSparkles() {
+      const container = document.getElementById("sparkles");
+
+      for (let i = 0; i < 35; i++) {
+        const sparkle = document.createElement("span");
+
+        sparkle.className = "sparkle";
+        sparkle.textContent = "✦";
+        sparkle.style.left = `${Math.random() * 100}%`;
+        sparkle.style.top = `${Math.random() * 100}%`;
+        sparkle.style.animationDelay = `${Math.random() * 4}s`;
+        sparkle.style.animationDuration = `${2 + Math.random() * 3}s`;
+
+        container.appendChild(sparkle);
+      }
+    }
+
+    function createHeartBurst() {
+      const heartSymbols = ["♥", "♡", "💗", "💖", "✦"];
+
+      for (let i = 0; i < 24; i++) {
+        const heart = document.createElement("span");
+
+        heart.className = "heart-burst";
+        heart.textContent =
+          heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+
+        heart.style.left = `${window.innerWidth / 2}px`;
+        heart.style.top = `${window.innerHeight / 2}px`;
+        heart.style.color = ["#c95778", "#e78ba7", "#ffffff", "#7564a8"][
+          Math.floor(Math.random() * 4)
+        ];
+        heart.style.fontSize = `${1 + Math.random() * 1.5}rem`;
+        heart.style.setProperty("--x", `${(Math.random() - 0.5) * 380}px`);
+        heart.style.setProperty("--y", `${(Math.random() - 0.7) * 420}px`);
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 1600);
+      }
+    }
+
+    hugButton.addEventListener("click", () => {
+      createHeartBurst();
+      hugButton.textContent = "Pelukan terkirim 🤍";
+
+      setTimeout(() => {
+        hugButton.textContent = "Kirim Pelukan 🤍";
+      }, 2500);
+    });
+
+    createFloatingElements();
+    createSparkles();
+  </script>
+</body>
+</html>
